@@ -13,6 +13,12 @@ from schedule.serializers import HabitSerializer
 
 
 class HabitCreateListView(generics.ListCreateAPIView):
+    """
+        View for displaying habits,
+        handles 'GET', 'POST' methods
+
+        Access for owner or superuser only
+    """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     pagination_class = HabitPaginator
@@ -39,12 +45,21 @@ class HabitCreateListView(generics.ListCreateAPIView):
 
 
 class HabitRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    """
+    View for displaying habits,
+    handles 'GET', 'DELETE', 'PUT', 'PATCH' methods
+
+    Access for owner or superuser only
+    """
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     permission_classes = [IsOwner | IsSuperuser]
 
 
 class PublicHabitsListView(generics.ListAPIView):
+    """
+        Controller for displaying a list of public habits
+    """
     serializer_class = HabitSerializer
     queryset = Habit.objects.filter(is_public=True)
     permission_classes = [IsAuthenticated]
