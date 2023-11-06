@@ -19,10 +19,12 @@ class Habit(models.Model):
     time_to_act = models.TimeField(verbose_name='Time', **NULLABLE)
     action = models.CharField(max_length=100, verbose_name='Action')
     is_pleasant = models.BooleanField(default=False, verbose_name='Is_pleasant', **NULLABLE)
-    period = models.DurationField(default=timedelta(days=1), verbose_name='period')
+    frequency = models.DurationField(default=timedelta(days=1), verbose_name='frequency')
     reward = models.CharField(max_length=100, verbose_name='Reward', **NULLABLE)
     time_to_complete = models.DurationField(default=timedelta(seconds=120), verbose_name='time_to_complete', **NULLABLE)
     is_public = models.BooleanField(default=False, verbose_name='Is_public', **NULLABLE)
+
+    last_execution = models.DateField(verbose_name='last_execution', **NULLABLE)
 
     def __str__(self):
         return f"{self.action} {self.time_to_act} {self.place}"
@@ -30,4 +32,3 @@ class Habit(models.Model):
     class Meta:
         verbose_name = 'Habit'
         verbose_name_plural = 'Habits'
-

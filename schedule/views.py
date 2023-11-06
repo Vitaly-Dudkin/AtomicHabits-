@@ -29,7 +29,6 @@ class HabitCreateListView(generics.ListCreateAPIView):
             Getting Lesson Objects based on User
         """
         queryset = super().get_queryset()
-        print(Habit.objects.filter(is_public=True))
 
         if self.request.user.is_staff or self.request.user.is_superuser:
             return queryset.all()
