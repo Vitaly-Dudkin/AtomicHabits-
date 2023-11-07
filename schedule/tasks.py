@@ -16,7 +16,7 @@ def check_time_habits():
     habits = Habit.objects.filter(time_to_act=time_now)
     for habit in habits:
         data = {
-            'chat_id': 415965166,
+            'chat_id': habit.user.user_telegram_id,
             'text': f"Hello {habit.user.email}"
         }
 
