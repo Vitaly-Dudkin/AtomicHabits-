@@ -17,7 +17,9 @@ def check_time_habits():
     for habit in habits:
         data = {
             'chat_id': habit.user.user_telegram_id,
-            'text': f"Hello {habit.user.email}"
+            'text': f"Hello {habit.user.email}\n"
+                    f"You need to do {habit.action}\n"
+                    f"time to complete - {habit.time_to_complete}"
         }
 
         requests.post(f"https://api.telegram.org/bot{os.getenv('TG_ACCESS_TOKEN')}/sendMessage", data)
