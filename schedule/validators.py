@@ -1,11 +1,11 @@
 from rest_framework.exceptions import ValidationError
 
-from schedule.models import Habit
-
 
 def validate_related_fields_habits(value):
-    if sum([bool(value.get('related_habit')), bool(value.get('reward')), bool(value.get('is_pleasant'))]) > 1:
-        raise ValidationError('Related and reward habits cannot be selected at the same time')
+    if value.get('reward') and value.get('is_pleasant'):
+        raise ValidationError('Pleasant habit cant has a reward')
+    if value.get('related_habit') and not value.get('is_pleasant'):
+        raise ValidationError('Related habit can be only pleasant habit')
 
 
 def validate_reward_fields_habits(value):
