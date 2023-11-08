@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -23,10 +22,13 @@ class Migration(migrations.Migration):
                 ('is_pleasant', models.BooleanField(blank=True, default=False, null=True, verbose_name='Is_pleasant')),
                 ('frequency', models.DurationField(default=datetime.timedelta(days=1), verbose_name='frequency')),
                 ('reward', models.CharField(blank=True, max_length=100, null=True, verbose_name='Reward')),
-                ('time_to_complete', models.DurationField(blank=True, default=datetime.timedelta(seconds=120), null=True, verbose_name='time_to_complete')),
+                ('time_to_complete',
+                 models.DurationField(blank=True, default=datetime.timedelta(seconds=120), null=True,
+                                      verbose_name='time_to_complete')),
                 ('is_public', models.BooleanField(blank=True, default=False, null=True, verbose_name='Is_public')),
                 ('last_execution', models.DateField(blank=True, null=True, verbose_name='last_execution')),
-                ('related_habit', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='schedule.habit', verbose_name='Pleasant habit')),
+                ('related_habit', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                                    to='schedule.habit', verbose_name='Pleasant habit')),
             ],
             options={
                 'verbose_name': 'Habit',
