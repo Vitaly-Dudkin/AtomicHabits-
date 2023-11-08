@@ -26,7 +26,7 @@ class HabitTestCase(APITestCase):
             action='take a cold shower',
             is_pleasant=False,
             time_to_complete='00:00:10',
-            period='1 00:00:00',
+            frequency='1 00:00:00',
         )
 
         self.client.force_authenticate(user=self.user)
@@ -52,7 +52,7 @@ class HabitTestCase(APITestCase):
                     'time_to_act': self.habit.time_to_act,
                     "action": self.habit.action,
                     "is_pleasant": self.habit.is_pleasant,
-                    "period": self.habit.period,
+                    "frequency": self.habit.frequency,
                     "reward": self.habit.reward,
                     "time_to_complete": self.habit.time_to_complete,
                     "is_public": self.habit.is_public
@@ -70,7 +70,7 @@ class HabitTestCase(APITestCase):
             "is_pleasant": False,
             "reward": 'another cold shower',
             "time_to_complete": "00:02:00",
-            "period": '1 00:00:00',
+            "frequency": '1 00:00:00',
         }
 
         response = self.client.post(
@@ -105,7 +105,7 @@ class HabitTestCase(APITestCase):
             "is_pleasant": False,
             "reward": 'another cold shower',
             "time_to_complete": "00:02:00",
-            "period": '1 00:00:00',
+            "frequency": '1 00:00:00',
         }
 
         response = self.client.put(

@@ -24,7 +24,6 @@ class Habit(models.Model):
     time_to_complete = models.DurationField(default=timedelta(seconds=120), verbose_name='time_to_complete', **NULLABLE)
     is_public = models.BooleanField(default=False, verbose_name='Is_public', **NULLABLE)
 
-    last_execution = models.DateField(verbose_name='last_execution', **NULLABLE)
 
     def __str__(self):
         return f"{self.action} {self.time_to_act} {self.place}"
