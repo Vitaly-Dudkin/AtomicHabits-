@@ -4,8 +4,8 @@ from rest_framework.exceptions import ValidationError
 def validate_related_fields_habits(value):
     if value.get('reward') and value.get('is_pleasant'):
         raise ValidationError('Pleasant habit cant has a reward')
-    if value.get('related_habit') and not value.get('is_pleasant'):
-        raise ValidationError('Related habit can be only pleasant habit')
+    if value.get('related_habit') and value.get('is_pleasant'):
+        raise ValidationError('Pleasant habit cant has a related habit')
 
 
 def validate_reward_fields_habits(value):
