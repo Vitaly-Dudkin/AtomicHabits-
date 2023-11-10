@@ -1,11 +1,18 @@
 from rest_framework.exceptions import ValidationError
 
+from schedule.models import Habit
+
 
 def validate_related_fields_habits(value):
     if value.get('reward') and value.get('is_pleasant'):
         raise ValidationError('Pleasant habit cant has a reward')
     if value.get('related_habit') and value.get('is_pleasant'):
         raise ValidationError('Pleasant habit cant has a related habit')
+    if value.get('related_habit'):
+        habit = Habit.objects.get(pk=value.get('related_habit').id)
+        print(habit)
+        if not habit.is_pleasant:
+            raise ValidationError('Related habit has to be a pleasant habit')
 
 
 def validate_reward_fields_habits(value):
