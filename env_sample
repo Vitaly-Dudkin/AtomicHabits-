@@ -4,8 +4,12 @@ SECRET_KEY=
 DB_NAME=
 DB_USER=
 DB_PASSWORD=
-DB_HOST=localhost
+DB_HOST=
 
 
 # tg_token
 TG_ACCESS_TOKEN=
+
+# redis
+REDIS_HOST=
+REDIS_PORT=
