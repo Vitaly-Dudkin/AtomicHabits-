@@ -21,3 +21,41 @@
     Наслаждаться использованием проекта
 
 Желаем приятного пользования и успехов в достижении целей!
+
+Требования
+
+    Docker
+    Docker Compose
+
+Шаги по запуску
+
+    Клонирование репозитория
+
+    git clone https://github.com/kolambar/Atomic_Habits
+    cd Atomic_Habits
+
+Настройка окружения Создайте файл .env.docker в корне проекта и укажите необходимые переменные окружения. Пример:
+
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+DEBUG=False
+SECRET_KEY=
+TELEGRAM_TOKEN=
+CELERY_BROKER_URL=redis://redis:6379/0
+CELERY_RESULT_BACKEND=redis://redis:6379/0
+HOST=db
+
+Запуск проекта
+
+docker compose up --buile    
+
+Это создаст и запустит все необходимые контейнеры, включая Redis, PostgreSQL, app и бота для телеграмма, Celery и Celery_beat.
+
+docker-compose down
+
+Это остановит и удалит все созданные контейнеры
+
+    Запуск проекта
+
+Для работы с вашим приложением посетите http://0.0.0.0:8001 в вашем веб-браузере.
